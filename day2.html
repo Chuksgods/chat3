@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="val" value="0">
+    <button onclick="increase()">Up</button>
+    <button onclick="decrease()">Down</button>
+
+
+    <input id="season" type="text">
+    <button onclick="checkSeason()">check season</button>
+    <div id="display"></div>
+</body>
+
+</html>
+
+<script>
+    function increase() {
+        let inputValue = Number(document.getElementById('val').value)
+        inputValue++
+        document.getElementById('val').value = inputValue
+    }
+    function decrease() {
+        let inputValue = Number(document.getElementById('val').value)
+        inputValue--
+        document.getElementById('val').value = inputValue
+    }
+
+    if (25) {
+        console.log('wowww');
+    }
+
+    function checkSeason() {
+        // winter summer autumn spring
+        let season = document.getElementById('season').value
+        if (season === 'winter') {
+            display.innerHTML = '<p> this is winter </p>'
+        } else if (season === summer) {
+           display.innerHTML = '<p> this is summer </p>'
+        } else if (season === autumn) {
+           display.innerHTML = '<p> this is autumn </p>'
+        } else if (season === 'spring') {
+           display.innerHTML = '<p> this is spring </p>'
+        } else {
+            display.innerHTML = '<p> Invalid input </p>'
+        }
+    }
+
+
+    let key = 'monday'
+    switch (key){
+        case 'monday': 
+            console.log('this is monday');
+            break;
+            
+    }
+</script>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days in a Month - Badass Style</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #0d0d0d;
+            color: #00ff99;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00ff99;
+            text-shadow: 0px 0px 10px #00ff99;
+        }
+
+        /* Form Container */
+        .calculator {
+            background: #222;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 153, 0.8);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            display: block;
+            color: #ff66cc;
+            text-shadow: 0px 0px 5px #ff66cc;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: #00ff99;
+            font-size: 1rem;
+            text-align: center;
+            box-shadow: 0px 0px 5px rgba(0, 255, 153, 0.5);
+        }
+
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Calculate Button */
+        .calculate-btn {
+            background: linear-gradient(145deg, #ff66cc, #72c9a6);
+            color: #222;
+            box-shadow: 0px 0px 10px rgba(255, 102, 204, 0.603), 0px 0px 20px rgba(97, 255, 192, 0.541);
+        }
+        .calculate-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(255, 102, 204, 1), 0px 0px 30px rgba(0, 255, 153, 1);
+        }
+
+        /* Reset Button */
+        .reset-btn {
+            margin-top: 10px;
+            background: linear-gradient(145deg, #d591ec, #2a6ed321);
+            color: #222;
+            box-shadow: 0px 0px 10px rgba(59, 53, 53, 0.7), 0px 0px 20px rgba(187, 182, 182, 0.7);
+        }
+
+        .reset-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(51, 248, 255, 0.438), 0px 0px 30px rgba(157, 198, 211, 0.582);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #ff66cc;
+            text-shadow: 0px 0px 10px #ff66cc, 0px 0px 5px #00ff99;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Days in a Month Calculator</h2>
+        
+        <label>Month:</label>
+        <select id="month">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+
+        <button class="calculate-btn" onclick="calculateDays()">Calculate</button>
+        <button class="reset-btn" onclick="resetForm()">Reset</button>
+
+        <p id="result"></p>
+    </div>
+</body>
+</html>
+<script>
+    function calculateDays() {
+        const month = parseInt(document.getElementById("month").value);
+        const days = new Date(2024, month, 0).getDate();
+        document.getElementById("result").textContent = `Days: ${days}`;
+    }
+
+    function resetForm() {
+        document.getElementById("month").value = "1";
+        document.getElementById("result").textContent = "";
+    }
+</script>

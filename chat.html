@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+
+    <input type="number" id="numberInput" value="0">
+    <button id="upButton">Up</button>
+    <button id="downButton">Down</button>
+
+    <script>
+        
+        const numberInput = document.getElementById("numberInput");
+        const upButton = document.getElementById("upButton");
+        const downButton = document.getElementById("downButton");
+
+       
+        upButton.addEventListener("click", () => {
+            numberInput.value = parseInt(numberInput.value) + 1;
+        });
+
+        
+        downButton.addEventListener("click", () => {
+            numberInput.value = parseInt(numberInput.value) - 1;
+        });
+    </script>
+
+</body>
+</html>

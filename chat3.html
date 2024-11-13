@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Days in a Month Calculator</title>
+  <style>
+    /* Background styling */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      color: #fff;
+      background: radial-gradient(circle, #1b2735, #090a0f);
+    }
+
+    /* Starry background animation */
+    .stars, .shooting-star {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .stars {
+      background: url('https://www.solarsystemscope.com/textures/download/2k_stars.jpg') repeat;
+      background-size: cover;
+      animation: stars 200s linear infinite;
+    }
+
+    /* Shooting stars effect */
+    .shooting-star {
+      background: linear-gradient(white, transparent);
+      width: 2px;
+      height: 100%;
+      transform: rotate(45deg);
+      opacity: 0.7;
+      animation: shooting 2s linear infinite;
+    }
+
+    /* Shooting star animation */
+    @keyframes shooting {
+      0% { top: -10%; left: 110%; opacity: 0.7; }
+      100% { top: 110%; left: -10%; opacity: 0; }
+    }
+
+    /* Main container with a subtle glow */
+    .container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+      position: relative;
+      z-index: 1;
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    /* Floating effect for the container */
+    @keyframes floating {
+      0%, 100% { transform: translateY(-10px); }
+      50% { transform: translateY(10px); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ffb6c1;
+      text-shadow: 0 0 10px #ffb6c1, 0 0 20px #ff6b6b;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #ff6b6b, 0 0 30px #ffb6c1; }
+      100% { text-shadow: 0 0 20px #ff6b6b, 0 0 40px #ffb6c1; }
+    }
+
+    label {
+      font-size: 1.2rem;
+      color: #add8e6;
+    }
+
+    /* Dropdown styling */
+    select {
+      width: 180px;
+      padding: 12px;
+      font-size: 1rem;
+      color: #333;
+      background: linear-gradient(135deg, #00c9ff, #92fe9d);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s;
+    }
+
+    select:hover {
+      transform: scale(1.1);
+    }
+
+    /* Button styling with a glow */
+    button {
+      background: linear-gradient(135deg, #ff8a00, #da1b60);
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+      box-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 100, 100, 0.8);
+    }
+
+    /* Result styling with a shimmer effect */
+    #result {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ffeb3b;
+      margin-top: 1.5rem;
+      text-shadow: 0 0 8px rgba(255, 235, 59, 0.8), 0 0 15px rgba(255, 100, 100, 0.8);
+      animation: shimmer 2s infinite alternate;
+    }
+
+    @keyframes shimmer {
+      0% { text-shadow: 0 0 8px #ffeb3b, 0 0 20px #ff6b6b; }
+      100% { text-shadow: 0 0 15px #ffae00, 0 0 30px #ff0099; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Starry and Shooting Stars Background -->
+  <div class="stars"></div>
+  <div class="shooting-star"></div>
+
+  <div class="container">
+    <h1>🌌 Days in a Month 🌌</h1>
+    <label for="month">Select a month:</label>
+    <select id="month">
+      <option value="1">January</option>
+      <option value="2">February</option>
+      <option value="3">March</option>
+      <option value="4">April</option>
+      <option value="5">May</option>
+      <option value="6">June</option>
+      <option value="7">July</option>
+      <option value="8">August</option>
+      <option value="9">September</option>
+      <option value="10">October</option>
+      <option value="11">November</option>
+      <option value="12">December</option>
+    </select>
+    <button onclick="calculateDays()">Calculate Days</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function getDaysInMonth(month) {
+      const year = new Date().getFullYear(); // Use current year
+      return new Date(year, month, 0).getDate();
+    }
+
+    function calculateDays() {
+      const month = parseInt(document.getElementById("month").value);
+      const result = document.getElementById("result");
+
+      if (month >= 1 && month <= 12) {
+        const daysInMonth = getDaysInMonth(month);
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        result.textContent = `✨ ${monthNames[month - 1]} has ${daysInMonth} days! ✨`;
+      } else {
+        result.textContent = "Please select a valid month.";
+      }
+    }
+  </script>
+</body>
+</html>
